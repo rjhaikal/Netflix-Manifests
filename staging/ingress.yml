@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt
+    nginx.ingress.kubernetes.io/rewrite-target: /
+  name: rj-netflix-ingress-stg
+  namespace: rj-netflix-stg
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: chill-stg.rjhaikal.my.id
+    http:
+      paths:
+      - backend:
+          service:
+            name: netflix-app-stg
+            port:
+              number: 80
+        path: /
+        pathType: Prefix
+  tls:
+  - hosts:
+    - 'chill-stg.rjhaikal.my.id'
+    secretName: chill-stg-rjhaikal-secret

@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: netflix-app-stg
+  namespace: rj-netflix-stg
+  labels:
+    app: netflix-app-stg
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: netflix-app-stg
+  template:
+    metadata:
+      labels:
+        app: netflix-app-stg
+    spec:
+      containers:
+      - name: netflix-app-stg
+        image: harbor.sd.btech.id/netflix/rj-netflix:latest
+        ports:
+        - containerPort: 80
