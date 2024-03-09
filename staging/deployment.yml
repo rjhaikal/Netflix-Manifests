@@ -17,6 +17,6 @@ spec:
     spec:
       containers:
       - name: netflix-app-stg
-        image: harbor.sd.btech.id/netflix/rj-netflix:218fedc
+        image: harbor.sd.btech.id/netflix/rj-netflix:3f5602a
         ports:
         - containerPort: 80
